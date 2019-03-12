@@ -3,15 +3,11 @@ package com.redmancometh.panicbutton.controller;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-
 import com.redmancometh.panicbutton.config.ConfigManager;
 import com.redmancometh.panicbutton.config.pojo.KillConfig;
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

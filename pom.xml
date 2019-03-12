@@ -14,6 +14,12 @@
 					<include>*</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>config</directory>
+				<includes>
+					<include>*</include>
+				</includes>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
@@ -41,48 +47,6 @@
 									<mainClass>com.redmancometh.panicbutton.PanicButton</mainClass>
 								</manifest>
 							</archive>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.akathist.maven.plugins.launch4j</groupId>
-				<artifactId>launch4j-maven-plugin</artifactId>
-				<version>1.5.2</version>
-				<executions>
-					<execution>
-						<id>l4j-gui</id>
-						<phase>package</phase>
-						<goals>
-							<goal>launch4j</goal>
-						</goals>
-						<configuration>
-							<headerType>gui</headerType>
-							<outfile>target/panicbutton.exe</outfile>
-							<jar>target/${project.artifactId}-${project.version}.jar</jar>
-							<!-- if <dontWrapJar>true</dontWrapJar> change to this conf <jar>${project.artifactId}-${project.version}.jar</jar> -->
-							<dontWrapJar>false</dontWrapJar>
-							<errTitle>Error in launch4j plugin</errTitle>
-							<classPath>
-								<mainClass>com.redmancometh.panicbutton.PanicButton</mainClass>
-							</classPath>
-							<jre>
-								<minVersion>1.8.0</minVersion>
-								<initialHeapSize>512</initialHeapSize>
-								<maxHeapSize>1024</maxHeapSize>
-							</jre>
-							<versionInfo>
-								<fileVersion>1.0.0.0</fileVersion>
-								<txtFileVersion>1.0.0.0</txtFileVersion>
-								<fileDescription>A panic button</fileDescription>
-								<copyright>Redmancometh (c) 2014 </copyright>
-								<companyName>Redmancometh</companyName>
-								<productVersion>3.0.0.0</productVersion>
-								<txtProductVersion>${project.version}</txtProductVersion>
-								<productName>PanicButton</productName>
-								<internalName>panic</internalName>
-								<originalFilename>panicbutton.exe</originalFilename>
-							</versionInfo>
 						</configuration>
 					</execution>
 				</executions>

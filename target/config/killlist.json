@@ -1,31 +1,30 @@
 {
-	"kill-list": [
-		"firefox.exe",
-		"java.exe",
-		"javaw.exe"
-	],
-	"white-list": [
-		"java.exe",
-		"javaw.exe",
-		"eclipse.exe",
-		"svchost.exe",
-		"dllhost.exe",
-		"searchfilterhost.exe",
-		"rtkngui64.exe",
-		"sedsvc.exe",
-		"wmiprvse.exe",
-		"shellexperiencehost.exe",
-		"wudfhost.exe",
-		"runtimebroker.exe",
-		"appvshnotify.exe",
-		"applicationframehost.exe",
-		"explorer.exe",
-		"ntoskrnl.exe",
-		"sihost.exe",
-		"services.exe",
-		"smss.exe",
-		"wininit.exe",
-		"searchui.exe",
-		"conhost.exe"
-	]
+	"whitelist-kill-combo": "ctrl+alt+d",
+	"blacklist-kill-combo": "ctrl+alt+c",
+  "kill-list": [
+    "java.exe",
+    "firefox.exe"
+  ],
+  "white-list": [
+    "svchost.exe",
+    "dllhost.exe",
+    "searchfilterhost.exe",
+    "rtkngui64.exe",
+    "sedsvc.exe",
+    "wmiprvse.exe",
+    "shellexperiencehost.exe",
+    "wudfhost.exe",
+    "runtimebroker.exe",
+    "appvshnotify.exe",
+    "applicationframehost.exe",
+    "explorer.exe",
+    "ntoskrnl.exe",
+    "sihost.exe",
+    "services.exe",
+    "smss.exe",
+    "wininit.exe",
+    "searchui.exe",
+    "conhost.exe",
+    "eclipse.exe"
+  ]
 }
