@@ -47,6 +47,7 @@ public class PanicButton extends Application {
 	 * Start at the top of the spring stack, and configure/start JavaFX
 	 */
 	public void start(Stage primaryStage) throws Exception {
+		primaryStage.setTitle("Panic Button");
 		gui = springContext.getBean(GUIManager.class);
 		gui.start(primaryStage);
 	}
