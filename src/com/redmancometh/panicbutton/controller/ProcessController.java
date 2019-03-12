@@ -38,7 +38,7 @@ public class ProcessController {
 			Optional<String> cmd = process.info().command();
 			if (cmd.isPresent()) {
 				String procName = new File(cmd.get()).getName().toLowerCase();
-				if (!whiteList.contains(procName))
+				if (!whiteList.contains(procName) && (!process.equals(ProcessHandle.current())))
 					// Probably re-add the try-catch with an Alert dialog
 					process.destroy();
 			}
