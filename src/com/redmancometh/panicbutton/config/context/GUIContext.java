@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.redmancometh.panicbutton.config.ConfigManager;
+import com.redmancometh.panicbutton.config.context.pojo.KeyContainer;
 import com.redmancometh.panicbutton.config.pojo.KillConfig;
 import com.redmancometh.panicbutton.controller.ListController;
 import com.redmancometh.panicbutton.controller.ProcessController;
@@ -22,7 +23,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -80,7 +80,7 @@ public class GUIContext {
 					"Please input the process name you wish to kill list. Make sure it is *only in lowercase*!");
 			Optional<String> item = dialog.showAndWait();
 			if (!item.isPresent())
-				popAlert();
+				popNoInputAlert();
 			else
 				lists.addKillList(item.get());
 		});
@@ -97,7 +97,7 @@ public class GUIContext {
 					"Please input the process name you wish to whitelist. Make sure it is *only in lowercase*!");
 			Optional<String> item = dialog.showAndWait();
 			if (!item.isPresent())
-				popAlert();
+				popNoInputAlert();
 			else
 				lists.addWhitelist(item.get());
 		});
@@ -121,15 +121,15 @@ public class GUIContext {
 
 	@Bean(name = "bind-wlkillkey")
 	public TextField comboWL(@Qualifier("blacklist-box") ListView blacklistBox,
-			@Qualifier("combo-killwl") KeyCombination killWl) {
-		TextField bindField = new TextField(killWl.getDisplayText() + " (Click to Rebind)");
+			@Qualifier("combo-killwl") KeyContainer killWl) {
+		TextField bindField = new TextField(killWl.getCombo().getDisplayText());
 		return bindField;
 	}
 
 	@Bean(name = "bind-blkillkey")
 	public TextField comboBL(@Qualifier("whitelist-box") ListView whitelistBox,
-			@Qualifier("combo-killbl") KeyCombination killBl) {
-		TextField bindField = new TextField(killBl.getDisplayText() + " (Click to Rebind)");
+			@Qualifier("combo-killbl") KeyContainer killBl) {
+		TextField bindField = new TextField(killBl.getCombo().getDisplayText());
 		GridPane.setMargin(bindField, new Insets(0, 0, 0, 120));
 		return bindField;
 	}
@@ -151,9 +151,10 @@ public class GUIContext {
 		return new Scene(root, 800, 600);
 	}
 
-	private void popAlert() {
+	private void popNoInputAlert() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setContentText("No input was detected. Please input text before hitting add!");
 		alert.show();
 	}
+
 }

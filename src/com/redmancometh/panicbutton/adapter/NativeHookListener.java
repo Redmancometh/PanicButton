@@ -1,4 +1,5 @@
 package com.redmancometh.panicbutton.adapter;
+
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import org.springframework.beans.factory.annotation.Autowired;

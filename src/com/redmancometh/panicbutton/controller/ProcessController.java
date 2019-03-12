@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import com.redmancometh.panicbutton.config.ConfigManager;
 import com.redmancometh.panicbutton.config.pojo.KillConfig;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 @Controller
 public class ProcessController {
 	@Autowired
@@ -30,6 +34,7 @@ public class ProcessController {
 				}
 			}
 		});
+		showAlert("blacklist");
 	}
 
 	public void killWhitelist() {
@@ -43,6 +48,15 @@ public class ProcessController {
 					process.destroy();
 			}
 		});
-
+		showAlert("whitelist");
 	}
+
+	public void showAlert(String type) {
+		Platform.runLater(() -> {
+			Alert killAlert = new Alert(AlertType.INFORMATION, "Killed Processes for " + type);
+			killAlert.setTitle("Killed Processes");
+			killAlert.show();
+		});
+	}
+
 }

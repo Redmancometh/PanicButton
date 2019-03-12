@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.redmancometh.panicbutton.config.ConfigManager;
+import com.redmancometh.panicbutton.config.context.pojo.KeyContainer;
 import com.redmancometh.panicbutton.config.pojo.KillConfig;
 
 import javafx.scene.input.KeyCode;
@@ -26,7 +27,7 @@ public class ConfigContext {
 	}
 
 	@Bean("combo-killwl")
-	public KeyCombination killWhitelist(@Qualifier("kill-conf-man") ConfigManager<KillConfig> killConf) {
+	public KeyContainer killWhitelist(@Qualifier("kill-conf-man") ConfigManager<KillConfig> killConf) {
 		String combo = killConf.getConfig().getWhitelistKillCombo();
 		KeyCombination chosenCombo;
 		KeyCombination defaultCombo = new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN,
@@ -34,13 +35,13 @@ public class ConfigContext {
 		try {
 			chosenCombo = combo == null ? defaultCombo : KeyCodeCombination.keyCombination(combo);
 		} catch (Exception e) {
-			return defaultCombo;
+			return new KeyContainer(defaultCombo);
 		}
-		return chosenCombo;
+		return new KeyContainer(chosenCombo);
 	}
 
 	@Bean("combo-killbl")
-	public KeyCombination killBlacklist(@Qualifier("kill-conf-man") ConfigManager<KillConfig> killConf) {
+	public KeyContainer killBlacklist(@Qualifier("kill-conf-man") ConfigManager<KillConfig> killConf) {
 		String combo = killConf.getConfig().getBlacklistKillCombo();
 		KeyCombination chosenCombo;
 		KeyCombination defaultCombo = new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN,
@@ -48,8 +49,8 @@ public class ConfigContext {
 		try {
 			chosenCombo = combo == null ? defaultCombo : KeyCodeCombination.keyCombination(combo);
 		} catch (Exception e) {
-			return defaultCombo;
+			return new KeyContainer(defaultCombo);
 		}
-		return chosenCombo;
+		return new KeyContainer(chosenCombo);
 	}
 }

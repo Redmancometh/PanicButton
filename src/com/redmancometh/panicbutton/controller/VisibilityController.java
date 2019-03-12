@@ -8,13 +8,9 @@ import java.awt.event.MouseEvent;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.logging.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 import com.redmancometh.panicbutton.config.context.pojo.StageHolder;
-
 import javafx.application.Platform;
 
 @Controller
@@ -35,11 +31,9 @@ public class VisibilityController {
 
 	public void createTrayIcon() {
 		try {
-			Logger.getLogger(this.getClass().getName()).info("CREATING TRAY ICON");
 			SystemTray tray = SystemTray.getSystemTray();
 			trayIcon.addMouseListener(mouseListener());
 			tray.add(trayIcon);
-			Logger.getLogger(this.getClass().getName()).info("TRAY ICON CREATED!");
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}
