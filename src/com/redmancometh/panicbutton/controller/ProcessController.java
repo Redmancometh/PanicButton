@@ -23,7 +23,6 @@ public class ProcessController {
 	private ConfigManager<KillConfig> killConfigMan;
 
 	public void killBlacklist() {
-		Logger.getLogger(this.getClass().getName()).info("KILL");
 		List<String> killList = killConfigMan.getConfig().getKillList();
 		ProcessHandle.allProcesses().forEach((process) -> {
 			Optional<String> cmd = process.info().command();
@@ -53,7 +52,7 @@ public class ProcessController {
 
 	public void showAlert(String type) {
 		Platform.runLater(() -> {
-			Alert killAlert = new Alert(AlertType.INFORMATION, "Killed Processes for " + type);
+			Alert killAlert = new Alert(AlertType.INFORMATION, "Killed processes for " + type);
 			killAlert.setTitle("Killed Processes");
 			killAlert.show();
 		});
